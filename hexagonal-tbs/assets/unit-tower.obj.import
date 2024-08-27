@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b38i7b0a3cpkr"
+path="res://.godot/imported/unit-tower.obj-122816b9f62088a50f964a9734eb86fe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/unit-tower.obj-122816b9f62088a50f964a9734eb86fe.mesh"]
+
+source_file="res://assets/unit-tower.obj"
+dest_files=["res://.godot/imported/unit-tower.obj-122816b9f62088a50f964a9734eb86fe.mesh", "res://.godot/imported/unit-tower.obj-122816b9f62088a50f964a9734eb86fe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

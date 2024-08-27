@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vdrawsri0k42"
+path="res://.godot/imported/building-village.obj-fd25dd94b5f3eab4bdccb83453edfc05.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-village.obj-fd25dd94b5f3eab4bdccb83453edfc05.mesh"]
+
+source_file="res://assets/building-village.obj"
+dest_files=["res://.godot/imported/building-village.obj-fd25dd94b5f3eab4bdccb83453edfc05.mesh", "res://.godot/imported/building-village.obj-fd25dd94b5f3eab4bdccb83453edfc05.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

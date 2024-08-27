@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c1cegatcwpxy6"
+path="res://.godot/imported/path-intersectionB.obj-2b8b943eeee6cf903395ec67969fd1ff.mesh"
+
+[deps]
+
+files=["res://.godot/imported/path-intersectionB.obj-2b8b943eeee6cf903395ec67969fd1ff.mesh"]
+
+source_file="res://assets/path-intersectionB.obj"
+dest_files=["res://.godot/imported/path-intersectionB.obj-2b8b943eeee6cf903395ec67969fd1ff.mesh", "res://.godot/imported/path-intersectionB.obj-2b8b943eeee6cf903395ec67969fd1ff.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

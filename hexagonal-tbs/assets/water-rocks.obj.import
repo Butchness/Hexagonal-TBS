@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ba0ssp6holf8n"
+path="res://.godot/imported/water-rocks.obj-bd6e8055a67290f14489c41776082b53.mesh"
+
+[deps]
+
+files=["res://.godot/imported/water-rocks.obj-bd6e8055a67290f14489c41776082b53.mesh"]
+
+source_file="res://assets/water-rocks.obj"
+dest_files=["res://.godot/imported/water-rocks.obj-bd6e8055a67290f14489c41776082b53.mesh", "res://.godot/imported/water-rocks.obj-bd6e8055a67290f14489c41776082b53.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
