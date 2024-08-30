@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://lkiauwmm88sp"]
+
+[ext_resource type="Script" path="res://scripts/Tile.cs" id="1_42aui"]
+[ext_resource type="ArrayMesh" uid="uid://3e28p3qvtuor" path="res://meshes/tiles/OBJ format/grass.obj" id="2_b0wq3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ofw0e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ltdva"]
+height = 0.5
+radius = 0.25
+
+[node name="Tile" type="Node3D"]
+script = ExtResource("1_42aui")
+
+[node name="primaryTileModel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_b0wq3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ofw0e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_ltdva")

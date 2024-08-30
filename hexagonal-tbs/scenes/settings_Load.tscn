@@ -1,6 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://vh867hb7pg0e"]
+[gd_scene load_steps=3 format=3 uid="uid://vh867hb7pg0e"]
 
 [ext_resource type="Script" path="res://scripts/SettingsLoader.cs" id="1_ohdru"]
+[ext_resource type="PackedScene" uid="uid://lkiauwmm88sp" path="res://scenes/tile.tscn" id="2_8xx1d"]
 
 [node name="SettingsLoad" type="Node3D"]
 script = ExtResource("1_ohdru")
+
+[node name="Anchor" parent="." instance=ExtResource("2_8xx1d")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+TileTypeIndex = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2, 3)
+
+[node name="Tile" parent="." instance=ExtResource("2_8xx1d")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -0.55, 0, 0.9)
+TileTypeIndex = 2
+
+[node name="Tile2" parent="." instance=ExtResource("2_8xx1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0, 0.9)
+TileTypeIndex = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.838243, 0.545298, 0, -0.545298, 0.838243, 0, 0, 0)

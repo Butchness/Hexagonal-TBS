@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddpno3cmm2y8y"
+path="res://.godot/imported/path-end.obj-28dee7080f554a9a7c7539a79287667e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/path-end.obj-28dee7080f554a9a7c7539a79287667e.mesh"]
+
+source_file="res://meshes/tiles/OBJ format/path-end.obj"
+dest_files=["res://.godot/imported/path-end.obj-28dee7080f554a9a7c7539a79287667e.mesh", "res://.godot/imported/path-end.obj-28dee7080f554a9a7c7539a79287667e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

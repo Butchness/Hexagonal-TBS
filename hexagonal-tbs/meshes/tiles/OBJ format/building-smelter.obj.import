@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b2yvbk034dweo"
+path="res://.godot/imported/building-smelter.obj-b645bc921201b26cc3670ea2b60ef97c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-smelter.obj-b645bc921201b26cc3670ea2b60ef97c.mesh"]
+
+source_file="res://meshes/tiles/OBJ format/building-smelter.obj"
+dest_files=["res://.godot/imported/building-smelter.obj-b645bc921201b26cc3670ea2b60ef97c.mesh", "res://.godot/imported/building-smelter.obj-b645bc921201b26cc3670ea2b60ef97c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

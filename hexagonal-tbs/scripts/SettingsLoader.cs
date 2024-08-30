@@ -1,21 +1,43 @@
 using Godot;
 using System;
-using static Godot.GD;
+
+struct ConfigSettings
+{
+	public bool mute_on_unfocus;
+	public int master_vol;
+}
 
 public partial class SettingsLoader : Node3D
 {
-	// Called when the node enters the scene tree for the first time.
+	private ConfigSettings settings;
+	private AudioStreamPlayer testSound; // Assuming you have an AudioStreamPlayer node
+
 	public override void _Ready()
 	{
-		var config = new ConfigFile();
-		Error err = config.Load("res://settings.cfg");
+		// Initialize the AudioStreamPlayer node (assuming it’s a child node of this node)
+		//testSound = GetNode<AudioStreamPlayer>("testSound"); // Update the path as needed
 		
-		if(err != Error.Ok){
-			Print(err);
+		var configFile = new ConfigFile();
+		Error err = configFile.Load("res://settings.cfg");
+		
+		if (err != Error.Ok)
+		{
+			GD.Print("Failed to load settings file: " + err);
+			settings.mute_on_unfocus = false; // Default value
+			settings.master_vol = 50;         // Default value
 		}
+		else
+		{
+			// Load values from the config file
+			settings.mute_on_unfocus = (bool)configFile.GetValue("audio", "mute_on_unfocus", false);
+			settings.master_vol = (int)configFile.GetValue("audio", "master_volume", 20);
+		}
+
+		// Set the master volume (convert percentage to decibels)
+		float dbVolume = (settings.master_vol > 0) ? 20f * Mathf.Log(settings.master_vol / 100f) : -80f;
+		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Master"), dbVolume);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}
