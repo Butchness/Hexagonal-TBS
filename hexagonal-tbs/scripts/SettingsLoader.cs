@@ -36,6 +36,29 @@ public partial class SettingsLoader : Node3D
 		// Set the master volume (convert percentage to decibels)
 		float dbVolume = (settings.master_vol > 0) ? 20f * Mathf.Log(settings.master_vol / 100f) : -80f;
 		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Master"), dbVolume);
+		
+		CallDeferred(nameof(LoadMapScene));
+	}
+	
+	public void LoadMapScene()
+	{
+		//Load the new scene for instancing
+		var mapScene = (PackedScene)ResourceLoader.Load("res://scenes/mapSpawner.tscn");
+		
+		if(mapScene != null)
+		{	
+			//instance pointer to current scene
+			Node lastScene = GetTree().CurrentScene;
+			
+			//Instance the new scene
+			GetTree().ChangeSceneToPacked(mapScene);
+			
+			//close previous scene
+			//lastScene.QueueFree();
+		}
+		else{
+			GD.PrintErr("Unable to load scene");
+		}
 	}
 
 	public override void _Process(double delta)

@@ -7,12 +7,15 @@ public partial class Tile : Node3D
 
 	public enum TileType{
 		Blank = 0,
-		Building = 1,
-		ResourceWood = 2,
-		Water = 3,
-		Castle = 4,
-		Dock = 5,
-		Market = 6
+		ResourceWood = 1,
+		Water = 2,
+		Mountain = 3,
+		Dirt = 4,
+		DirtLumber = 5/*,
+		Building = 4,
+		Castle = 5,
+		Dock = 6,
+		Market = 7*/
 		// Add more types as needed
 	}
 
@@ -20,12 +23,15 @@ public partial class Tile : Node3D
 	private readonly Dictionary<TileType, Mesh> tileMeshes = new Dictionary<TileType, Mesh>
 	{
 		{ TileType.Blank, GD.Load<Mesh>("res://meshes/tiles/OBJ format/grass.obj") },
-		{ TileType.Building, GD.Load<Mesh>("res://meshes/tiles/OBJ format/building-cabin.obj") },
 		{ TileType.ResourceWood, GD.Load<Mesh>("res://meshes/tiles/OBJ format/grass-forest.obj") },
 		{ TileType.Water, GD.Load<Mesh>("res://meshes/tiles/OBJ format/water.obj") },
-		{ TileType.Castle, GD.Load<Mesh>("res://meshes/tiles/OBJ format/building-castle.obj") },
-		{ TileType.Dock, GD.Load<Mesh>("res://meshes/tiles/OBJ format/building-dock.obj") },
+		{ TileType.Mountain, GD.Load<Mesh>("res://meshes/tiles/OBJ format/grass-hill.obj") },
+		{ TileType.Dirt, GD.Load<Mesh>("res://meshes/tiles/OBJ format/dirt.obj") },
+		{ TileType.DirtLumber, GD.Load<Mesh>("res://meshes/tiles/OBJ format/dirt-lumber.obj") },/*,
+		{ TileType.Building, GD.Load<Mesh>("res://meshes/tiles/OBJ format/building-house.obj") },
 		{ TileType.Market, GD.Load<Mesh>("res://meshes/tiles/OBJ format/building-market.obj") },
+		{ TileType.Dock, GD.Load<Mesh>("res://meshes/tiles/OBJ format/building-dock.obj") },
+		{ TileType.Castle, GD.Load<Mesh>("res://meshes/tiles/OBJ format/building-castle.obj") }*/
 	};
 
 	[Export]
@@ -49,6 +55,7 @@ public partial class Tile : Node3D
 
 		// Initialize the tile with the selected type
 		SetTileType((TileType)_tileTypeIndex);
+		//GD.Print("Tile Created!");
 	}
 
 	public void SetTileType(TileType type)
@@ -56,7 +63,7 @@ public partial class Tile : Node3D
 		_currentTileType = type;
 
 		// Debugging output
-		GD.Print("Setting tile type: " + type.ToString());
+		//GD.Print("Setting tile type: " + type.ToString());
 
 		// Assign the appropriate mesh to the MeshInstance3D
 		if (tileMeshes.ContainsKey(type))
@@ -65,7 +72,7 @@ public partial class Tile : Node3D
 			if (mesh != null)
 			{
 				meshInstance.Mesh = mesh;
-				GD.Print("Mesh assigned successfully for tile type: " + type.ToString());
+				//GD.Print("Mesh assigned successfully for tile type: " + type.ToString());
 			}
 			else
 			{
