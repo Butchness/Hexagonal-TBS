@@ -5,10 +5,3 @@
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_kd52g")
 GridSize = 20
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 10)
-fov = 100.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.844113, 0.536166, 0, -0.536166, -0.844113, 0, 2.44159, 0)

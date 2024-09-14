@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdfg755u48gig"]
+
+[ext_resource type="PackedScene" uid="uid://dywr6wlifu0te" path="res://scenes/mapSpawner.tscn" id="1_vn5l5"]
+[ext_resource type="PackedScene" uid="uid://ct5sf7g7mrvot" path="res://scenes/playerCharacter.tscn" id="2_vdfs5"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="mapFloor" parent="." instance=ExtResource("1_vn5l5")]
+
+[node name="player" parent="." instance=ExtResource("2_vdfs5")]
