@@ -43,7 +43,7 @@ public partial class SettingsLoader : Node3D
 	public void LoadMapScene()
 	{
 		//Load the new scene for instancing
-		var mapScene = (PackedScene)ResourceLoader.Load("res://scenes/mapSpawner.tscn");
+		var mapScene = (PackedScene)ResourceLoader.Load("res://scenes/level1Map.tscn");
 		
 		if(mapScene != null)
 		{	
