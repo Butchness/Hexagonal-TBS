@@ -1,0 +1,15 @@
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\NPC_Training.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\NPC_Training.AssemblyInfoInputs.cache
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\NPC_Training.AssemblyInfo.cs
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\NPC_Training.csproj.CoreCompileInputs.cache
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\NPC_Training.sourcelink.json
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\bin\Debug\net6.0\NPC_Training.exe
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\bin\Debug\net6.0\NPC_Training.deps.json
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\bin\Debug\net6.0\NPC_Training.runtimeconfig.json
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\bin\Debug\net6.0\NPC_Training.dll
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\bin\Debug\net6.0\NPC_Training.pdb
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\NPC_Training.dll
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\refint\NPC_Training.dll
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\NPC_Training.pdb
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\NPC_Training.genruntimeconfig.cache
+C:\Users\tlbutcher24\Desktop\The Lost Legacy\Games\Hexagonal-TBS\hexagonal-tbs\scripts\NPC_Training\obj\Debug\net6.0\ref\NPC_Training.dll

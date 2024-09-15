@@ -62,28 +62,82 @@ namespace NPC_Training{
         }
 
         // Method to increase or decrease stats, e.g. through buffs or debuffs
-    //This should be facilitated by the training manager
-    public void AdjustStats(int healthAdjustment, int manaAdjustment, int speedAdjustment, int armorAdjustment, int fortitudeAdjustment, int weaponDamageAdjustment, int attackRangeAdjustment)
-    {
-        MaxHealth += healthAdjustment;
-        MaxMana += manaAdjustment;
-        Speed += speedAdjustment;
-        Armor += armorAdjustment;
-        Fortitude += fortitudeAdjustment;
-        WeaponDamage += weaponDamageAdjustment;
-        AttackRange += attackRangeAdjustment;
-        
-        // Ensure the current health and mana don’t exceed the new maximum values
-        Health = Math.Min(Health, MaxHealth);
-        Mana = Math.Min(Mana, MaxMana);
-    }
+        //This should be facilitated by the training manager
+        public void AdjustStats(int healthAdjustment, int manaAdjustment, int speedAdjustment, int armorAdjustment, int fortitudeAdjustment, int weaponDamageAdjustment, int attackRangeAdjustment)
+        {
+            // Adjust current Health, but don't allow the max health to be changed unless it's intentional
+            if (healthAdjustment < 0)
+            {
+                TakeDamage(Math.Abs(healthAdjustment)); // Treat negative healthAdjustment as damage
+            }
+            else
+            {
+                Heal(healthAdjustment); // Treat positive healthAdjustment as healing
+            }
 
-    // To reset the stats (for example, at the end of a round or event)
-    //This should be facilitated by the training manager
-    public void ResetStats()
-    {
-        Health = MaxHealth;
-        Mana = MaxMana;
-    } 
-}
+            // Adjust current Mana (use mana if it's negative, regain mana if it's positive)
+            if (manaAdjustment < 0)
+            {
+                UseMana(Math.Abs(manaAdjustment)); // Use mana if adjustment is negative
+            }
+            else
+            {
+                RegainMana(manaAdjustment); // Regain mana if adjustment is positive
+            }
+
+            // Adjust other stats (like MaxHealth, MaxMana, Speed, Armor, etc.)
+            Speed += speedAdjustment;
+            Armor += armorAdjustment;
+            Fortitude += fortitudeAdjustment;
+            WeaponDamage += weaponDamageAdjustment;
+            AttackRange += attackRangeAdjustment;
+
+            // Ensure current health and mana don’t exceed the new maximum values
+            Health = Math.Min(Health, MaxHealth);
+            Mana = Math.Min(Mana, MaxMana);
+        }
+
+        // Add this extra method for spell use readability
+        public void AdjustStats(AgentStats effectStats)
+        {
+            // Adjust health (current health adjustment without affecting max health)
+            if (effectStats.Health < 0)
+            {
+                TakeDamage(Math.Abs(effectStats.Health)); // Apply damage if negative
+            }
+            else
+            {
+                Heal(effectStats.Health); // Apply healing if positive
+            }
+
+            // Adjust mana (current mana adjustment without affecting max mana)
+            if (effectStats.Mana < 0)
+            {
+                UseMana(Math.Abs(effectStats.Mana)); // Spend mana if negative
+            }
+            else
+            {
+                RegainMana(effectStats.Mana); // Regain mana if positive
+            }
+
+            // Adjust other stats (like Speed, Armor, etc.)
+            Speed += effectStats.Speed;
+            Armor += effectStats.Armor;
+            Fortitude += effectStats.Fortitude;
+            WeaponDamage += effectStats.WeaponDamage;
+            AttackRange += effectStats.AttackRange;
+
+            // Ensure current health and mana don’t exceed their max values
+            Health = Math.Min(Health, MaxHealth);
+            Mana = Math.Min(Mana, MaxMana);
+        }
+
+        // To reset the stats (for example, at the end of a round or event)
+        //This should be facilitated by the training manager
+        public void ResetStats()
+        {
+            Health = MaxHealth;
+            Mana = MaxMana;
+        } 
+    }
 }
