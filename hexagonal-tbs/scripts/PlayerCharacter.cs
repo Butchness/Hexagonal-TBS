@@ -17,6 +17,9 @@ public partial class PlayerCharacter : Node3D
 			if(eventKey.Pressed && eventKey.Keycode == Key.Escape){
 				GetTree().Quit(); //if the escape key is pressed, close the game
 			}
+			else if(eventKey.Pressed && eventKey.Keycode == "ui_forward"){
+				
+			}
 		}
 		//parse user inputs
 	}

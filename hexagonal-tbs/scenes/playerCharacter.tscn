@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/PlayerCharacter.cs" id="1_v5sfk"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Camera_Base" type="Node3D"]
 script = ExtResource("1_v5sfk")
 
-[node name="pivot" type="Node3D" parent="."]
+[node name="Camera_Pivot" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="pivot"]
+[node name="Camera3D" type="Camera3D" parent="Camera_Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 3, 4)
+
+[node name="UI" type="CanvasLayer" parent="Camera_Pivot"]
