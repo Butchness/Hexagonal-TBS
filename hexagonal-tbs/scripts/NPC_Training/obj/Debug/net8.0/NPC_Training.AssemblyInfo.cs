@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NPC_Training")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+450fdbbf481f129a9b8837d96a5ad36eb00fa65e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+452a5dfd9c3a22e0b7f02ff952127b120900e8f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("NPC_Training")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NPC_Training")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
