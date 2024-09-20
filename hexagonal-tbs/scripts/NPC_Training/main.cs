@@ -10,7 +10,7 @@ namespace NPC_Training_Test
         {
             // Create agent stats
             AgentStats agentStats = new AgentStats(20, 10, 5, 3, 3, 4, 5);
-            AgentStats targetStats = new AgentStats(30, 15, 4, 5, 5, 6, 3); // Create target stats for testing
+            AgentStats targetStats = new AgentStats(30, 15, 4, 4, 5, 6, 3); // Create target stats for testing
 
             // Output initial agent stats
             Console.WriteLine("Initial Agent Stats:");
@@ -23,26 +23,21 @@ namespace NPC_Training_Test
 
             // Create spells and store them in a dictionary
             Dictionary<string, Spell> spellBook = CreateSpellBook();
+
+            // Instantiate SpellManager
+            SpellManager spellManager = new SpellManager(spellBook);
             
-            // Output the spells available
-            Console.WriteLine("\nSpells Available:");
-            foreach (var spell in spellBook)
-            {
-                Console.WriteLine($"{spell.Key}: {spell.Value.Name}");
-            }
-
-            string spellToCast = "Fireball";
-            Spell fireball = spellBook[spellToCast];
-
-            if (fireball.CanCast(agentStats, 1))
+            // Cast the randomly selected spell from SpellManager
+            Spell selectedSpell = spellManager.Spells[0]; // There's only one spell in the list
+            if (selectedSpell.CanCast(agentStats, 1))
             {
                 Console.WriteLine("\nTarget Stats before spell:");
                 PrintAgentStats(targetStats);
 
-                Console.WriteLine($"\nAttempting to cast {fireball.Name} on the target.");
+                Console.WriteLine($"\nAttempting to cast {selectedSpell.Name} on the target.");
 
-                // Apply the effect to the caster and target
-                targetStats.AdjustStats(fireball.ApplyEffect(agentStats));
+                // Apply the effect to the target
+                targetStats.AdjustStats(selectedSpell.ApplyEffect(agentStats));
 
                 Console.WriteLine("\nUpdated Target Stats after spell:");
                 PrintAgentStats(targetStats);
@@ -65,13 +60,13 @@ namespace NPC_Training_Test
 
             // Create a fireball spell (damages target)
             AgentStats fireballCasterEffect = new AgentStats(0, -3, 0, 0, 0, 0, 0); // Reduces mana by 3 for caster
-            AgentStats fireballTargetEffect = new AgentStats(-6, 0, 0, 0, 0, 0, 0); // Deals 5 damage to the target
+            AgentStats fireballTargetEffect = new AgentStats(-12, 0, 0, 0, 0, 0, 0); // Deals 5 damage to the target
             Spell fireball = new Spell("Fireball", 5, 1, fireballCasterEffect, fireballTargetEffect);
             spellBook.Add("Fireball", fireball);
 
             // Create a healing spell (heals target)
             AgentStats healCasterEffect = new AgentStats(0, -2, 0, 0, 0, 0, 0); // Reduces mana by 2 for caster
-            AgentStats healTargetEffect = new AgentStats(5, 0, 0, 0, 0, 0, 0); // Heals 5 health to the target
+            AgentStats healTargetEffect = new AgentStats(2, 0, 0, 0, 0, 0, 0); // Heals 5 health to the target
             Spell healing = new Spell("Healing", 4, 1, healCasterEffect, healTargetEffect);
             spellBook.Add("Healing", healing);
 
