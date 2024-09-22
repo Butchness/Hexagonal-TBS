@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using NPC_Training;
 
 namespace NPC_Training_Test
-{
+{  
     class MainProgram
     {
         static void Main(string[] args)
         {
             // Create agent stats
-            AgentStats agentStats = new AgentStats(20, 10, 5, 3, 3, 4, 5);
-            AgentStats targetStats = new AgentStats(30, 15, 4, 4, 5, 6, 3); // Create target stats for testing
+            AgentStats agent1Stats = new AgentStats(20, 10, 5, 3, 3, 4, 5);
+            AgentStats agent2Stats = new AgentStats(20, 10, 5, 3, 3, 4, 5);
+            MapGenerator Map = new MapGenerator(25, 100);
 
             // Output initial agent stats
             Console.WriteLine("Initial Agent Stats:");
-            PrintAgentStats(agentStats);
+            PrintAgentStats(agent1Stats);
 
             // Create InventoryManager and generate random items
             InventoryManager inventoryManager = new InventoryManager();
@@ -24,33 +25,57 @@ namespace NPC_Training_Test
             // Create spells and store them in a dictionary
             Dictionary<string, Spell> spellBook = CreateSpellBook();
 
+            Agent a = new Agent(agent1Stats, spellBook);
+            Agent b = new Agent(agent2Stats, spellBook);
+
+            Console.WriteLine("\nCreated agent ");
+            Console.WriteLine($"Has the spell: {a.spellSlots.Spells[0].Name}");
+            PrintAgentStats(a.statsMax);
+            PrintInventory(a.inventory);
+
             // Instantiate SpellManager
             SpellManager spellManager = new SpellManager(spellBook);
             
             // Cast the randomly selected spell from SpellManager
             Spell selectedSpell = spellManager.Spells[0]; // There's only one spell in the list
-            if (selectedSpell.CanCast(agentStats, 1))
+            if (selectedSpell.CanCast(agent1Stats, 1))
             {
                 Console.WriteLine("\nTarget Stats before spell:");
-                PrintAgentStats(targetStats);
+                PrintAgentStats(agent2Stats);
 
                 Console.WriteLine($"\nAttempting to cast {selectedSpell.Name} on the target.");
 
                 // Apply the effect to the target
-                targetStats.AdjustStats(selectedSpell.ApplyEffect(agentStats));
+                agent2Stats.AdjustStats(selectedSpell.ApplyEffect(agent1Stats));
 
                 Console.WriteLine("\nUpdated Target Stats after spell:");
-                PrintAgentStats(targetStats);
+                PrintAgentStats(agent2Stats);
             }
 
             // Simulate agent using an item from the inventory
             int itemIndex = 0; // Choosing the first item to use
             Console.WriteLine($"\nUsing Item {itemIndex + 1}: {inventoryManager.Items[itemIndex].Name}");
-            UseItemOnAgent(inventoryManager.Items[itemIndex], agentStats);
+            UseItemOnAgent(inventoryManager.Items[itemIndex], agent1Stats);
 
             // Output updated agent stats
             Console.WriteLine("\nUpdated Agent Stats after using the item:");
-            PrintAgentStats(agentStats);
+            PrintAgentStats(agent1Stats);
+
+            Console.WriteLine("\nCurrent Map without agent\n");
+            Map.ShowMap();
+
+            a.setLocation(1, 1);
+            Console.WriteLine($"{a}'s current location: {a.Pos.x} x, {a.Pos.y} y");
+            a.setAlignment('1');
+            Map.PlaceAgent(a);
+
+            b.setLocation(3, 3);
+            Console.WriteLine($"{b}'s current location: {b.Pos.x} x, {b.Pos.y} y");
+            b.setAlignment('2');
+            Map.PlaceAgent(b);
+
+            Console.WriteLine("Current Map with new agents\n");
+            Map.ShowMap();
         }
 
         // Create the spell book containing predefined spells
@@ -80,15 +105,15 @@ namespace NPC_Training_Test
         }
 
         // Function to print agent stats
-        static void PrintAgentStats(AgentStats agentStats)
+        static void PrintAgentStats(AgentStats agent1Stats)
         {
-            Console.WriteLine($"Health: {agentStats.Health}/{agentStats.MaxHealth}");
-            Console.WriteLine($"Mana: {agentStats.Mana}/{agentStats.MaxMana}");
-            Console.WriteLine($"Speed: {agentStats.Speed}");
-            Console.WriteLine($"Armor: {agentStats.Armor}");
-            Console.WriteLine($"Fortitude: {agentStats.Fortitude}");
-            Console.WriteLine($"Weapon Damage: {agentStats.WeaponDamage}");
-            Console.WriteLine($"Range: {agentStats.AttackRange}");
+            Console.WriteLine($"Health: {agent1Stats.Health}/{agent1Stats.MaxHealth}");
+            Console.WriteLine($"Mana: {agent1Stats.Mana}/{agent1Stats.MaxMana}");
+            Console.WriteLine($"Speed: {agent1Stats.Speed}");
+            Console.WriteLine($"Armor: {agent1Stats.Armor}");
+            Console.WriteLine($"Fortitude: {agent1Stats.Fortitude}");
+            Console.WriteLine($"Weapon Damage: {agent1Stats.WeaponDamage}");
+            Console.WriteLine($"Range: {agent1Stats.AttackRange}");
         }
 
         // Function to print inventory
@@ -107,32 +132,32 @@ namespace NPC_Training_Test
         }
 
         // Function to apply the item to the agent's stats
-        static void UseItemOnAgent(Item item, AgentStats agentStats)
+        static void UseItemOnAgent(Item item, AgentStats agent1Stats)
         {
             foreach (var effect in item.Effects)
             {
                 switch (effect.Stat)
                 {
                     case "Health":
-                        agentStats.Heal(Math.Min(agentStats.Health + effect.Value, agentStats.MaxHealth)); //this can also reduce health theoretically
+                        agent1Stats.Heal(Math.Min(agent1Stats.Health + effect.Value, agent1Stats.MaxHealth)); //this can also reduce health theoretically
                         break;
                     case "Mana":
-                        agentStats.RegainMana(Math.Min(agentStats.Mana + effect.Value, agentStats.MaxMana)); //this can also reduce mana theoretically
+                        agent1Stats.RegainMana(Math.Min(agent1Stats.Mana + effect.Value, agent1Stats.MaxMana)); //this can also reduce mana theoretically
                         break;
                     case "Armor":
-                        agentStats.AdjustStats(0, 0, 0, effect.Value, 0, 0, 0);
+                        agent1Stats.AdjustStats(0, 0, 0, effect.Value, 0, 0, 0);
                         break;
                     case "Fortitude":
-                        agentStats.AdjustStats(0, 0, 0, 0, effect.Value, 0, 0);
+                        agent1Stats.AdjustStats(0, 0, 0, 0, effect.Value, 0, 0);
                         break;
                     case "WeaponDamage":
-                        agentStats.AdjustStats(0, 0, 0, 0, 0, effect.Value, 0);
+                        agent1Stats.AdjustStats(0, 0, 0, 0, 0, effect.Value, 0);
                         break;
                     case "Speed":
-                        agentStats.AdjustStats(0, 0, effect.Value, 0, 0, 0, 0);
+                        agent1Stats.AdjustStats(0, 0, effect.Value, 0, 0, 0, 0);
                         break;
                     case "Range":
-                        agentStats.AdjustStats(0, 0, 0, 0, 0, 0, effect.Value);
+                        agent1Stats.AdjustStats(0, 0, 0, 0, 0, 0, effect.Value);
                         break;
                     default:
                         throw new ArgumentException($"Cannot apply unknown effect: {effect.Stat}!");
