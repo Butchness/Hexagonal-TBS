@@ -26,6 +26,7 @@ namespace NPC_Training{
                     if(!(tile.covered)){
                         tile.Update(agent);
                         agent.setLocation(x,y);
+                        map.PlaceAgent(agent);
                         a = false;
                     }
                 }
