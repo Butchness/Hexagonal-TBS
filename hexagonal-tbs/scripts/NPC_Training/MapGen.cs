@@ -51,7 +51,7 @@ namespace NPC_Training{
         }
 
         // Function to show the map
-        public void ShowMap()
+        public string ShowMap()
         {
             StringBuilder output = new StringBuilder();
 
@@ -64,7 +64,7 @@ namespace NPC_Training{
                 output.Append('\n'); // Newline after each row
             }
 
-            Console.WriteLine(output.ToString()); // Output the map to the console
+            return output.ToString(); // Output the map to the console
         }
 
         public void Update(Agent a, int x, int y){

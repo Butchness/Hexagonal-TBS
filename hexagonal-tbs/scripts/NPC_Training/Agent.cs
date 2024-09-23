@@ -52,5 +52,17 @@ namespace NPC_Training{
             List<int> a = new List<int>();
             return a;
         }
+
+        // Function to print agent stats
+        public void getAgentStats()
+        {
+            Console.WriteLine($"Health: {statsCurrent.Health}/{statsCurrent.MaxHealth}");
+            Console.WriteLine($"Mana: {statsCurrent.Mana}/{statsCurrent.MaxMana}");
+            Console.WriteLine($"Speed: {statsCurrent.Speed} / {statsMax.Speed}");
+            Console.WriteLine($"Armor: {statsCurrent.Armor} / {statsMax.Armor}");
+            Console.WriteLine($"Fortitude: {statsCurrent.Fortitude} / {statsMax.Fortitude}");
+            Console.WriteLine($"Weapon Damage: {statsCurrent.WeaponDamage} / {statsMax.WeaponDamage}");
+            Console.WriteLine($"Range: {statsCurrent.AttackRange} / {statsMax.AttackRange}");
+        }
     }
 }

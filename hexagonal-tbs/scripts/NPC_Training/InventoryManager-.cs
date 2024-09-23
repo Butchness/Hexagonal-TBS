@@ -40,5 +40,20 @@ namespace NPC_Training
             }
             return null;
         }
+
+        // Function to print inventory
+        public void PrintInventory()
+        {
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Item item = Items[i];
+                Console.WriteLine($"{item.Name}:");
+
+                foreach (var effect in item.Effects)
+                {
+                    Console.WriteLine($"- {effect.Stat}: {effect.Value}");
+                }
+            }
+        }
     }
 }
