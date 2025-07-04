@@ -17,6 +17,7 @@ namespace NPC_Training{
             // Place the agents on the map
             foreach(var agent in agents){
                 bool a = true;
+
                 while(a){
                     Random random = new Random();
                     int x = random.Next(l);
@@ -26,8 +27,17 @@ namespace NPC_Training{
                     if(!(tile.covered)){
                         tile.Update(agent);
                         agent.setLocation(x,y);
-                        map.PlaceAgent(agent);
                         a = false;
+                        
+                        List<MapTile> visionMap = new List<MapTile>();
+                        for(int k = -2; k < 3; k++){
+                            for(int m = -2; m < 3; m++){
+                                visionMap.Add(map.GetTile(agent.Pos.x + k, agent.Pos.y + m));
+                                //Console.WriteLine($"x {k}, y {m}");
+                            }
+                        }
+                        agent.Perceive(visionMap);
+                        Console.WriteLine($"Map_Nodes : {agent.vis.Count}");
                     }
                 }
             }

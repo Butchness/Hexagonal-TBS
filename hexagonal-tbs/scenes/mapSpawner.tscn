@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dywr6wlifu0te"]
 
-[ext_resource type="Script" path="res://scripts/MapSpawner.cs" id="1_kd52g"]
+[ext_resource type="Script" uid="uid://5w50868yi7ox" path="res://scripts/MapSpawner.cs" id="1_kd52g"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_kd52g")

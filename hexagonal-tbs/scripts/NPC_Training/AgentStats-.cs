@@ -28,6 +28,19 @@ namespace NPC_Training{
             AttackRange = attackRange;
         }
 
+        public AgentStats()
+        {
+            MaxHealth = -1;
+            Health = -1; // Start with full health
+            MaxMana = -1;
+            Mana = -1; // Start with full mana
+            Speed = -1;
+            Armor = -1;
+            Fortitude = -1;
+            WeaponDamage = -1;
+            AttackRange = -1;
+        }
+
         //Used to deal damage to the agent
         //This should be facilitated by the training manager
         public void TakeDamage(int damage){

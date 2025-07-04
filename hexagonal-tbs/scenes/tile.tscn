@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lkiauwmm88sp"]
 
-[ext_resource type="Script" path="res://scripts/Tile.cs" id="1_42aui"]
+[ext_resource type="Script" uid="uid://bu8aub2htmqbc" path="res://scripts/Tile.cs" id="1_42aui"]
 [ext_resource type="ArrayMesh" uid="uid://3e28p3qvtuor" path="res://meshes/tiles/OBJ format/grass.obj" id="2_b0wq3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ofw0e"]

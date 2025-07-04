@@ -32,7 +32,7 @@ namespace NPC_Training{
         // Method to get the tile at a specific (x, y) position
         public MapTile GetTile(int x, int y)
         {
-            return Map.Find(t => t.location == (x, y));
+            return Map.Find(t => t.location == (x, y)); //throws exception if location not in map
         }
 
         // Method to place a new agent on the map
@@ -99,7 +99,7 @@ namespace NPC_Training{
         {
             space = agent; // Update the tile's contents
 
-            if (space != null)
+            if (space.Alignment != '0')
             {
                 covered = true;
                 icon = agent.Alignment; // Update icon based on agent's alignment
@@ -108,6 +108,7 @@ namespace NPC_Training{
             {
                 covered = false;
                 icon = '0'; // Reset icon when there's no agent
+                space = new Agent();
             }
         }
     }

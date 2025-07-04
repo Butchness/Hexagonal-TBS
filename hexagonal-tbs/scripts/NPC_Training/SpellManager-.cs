@@ -16,11 +16,16 @@ namespace NPC_Training
             SelectRandSpells(spellBook);
         }
 
+                public SpellManager()
+        {
+            Spells = new List<Spell>();
+        }
+
         public void SelectRandSpells(Dictionary<string, Spell> spellBook)
         {
             Spells.Clear();
 
-            if(SpellSize > spellBook.Count){throw new Exception("Spellbook is not large enouge!");}
+            if(SpellSize > spellBook.Count){throw new Exception("Spellbook is not large enough!");}
 
             if (spellBook.Count == 0)
             {

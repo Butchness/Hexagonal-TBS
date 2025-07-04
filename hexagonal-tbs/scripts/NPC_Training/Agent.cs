@@ -22,6 +22,25 @@ namespace NPC_Training{
             inventory = new InventoryManager();
             spellSlots = new SpellManager(spellBook);
             Alignment = '1';
+            vis = new List<MapTile>();
+
+            int calcInputNodes = (25 * (1 + 8 + 8 + 1) + 8 + 8 + (3 * 8) + 8 + 1);
+            int calcOutputNodes = (5 + 24 + 24 + 6);
+
+            NN = new NeuralNetwork(calcInputNodes, calcOutputNodes, vis, Alignment, statsMax, statsCurrent, inventory, spellSlots);
+        }
+
+
+        // This default constructor is to help with empty spaces
+        public Agent()
+        {
+            statsMax = new AgentStats();
+            statsCurrent = new AgentStats();
+            inventory = new InventoryManager();
+            spellSlots = new SpellManager();
+            Alignment = '0';
+            vis = new List<MapTile>();
+
         }
         
         // Function that will set the character that shows the allignment of
@@ -35,9 +54,10 @@ namespace NPC_Training{
             //agent's current vision
             
             if(map.Count > 25)
-                throw new Exception("Visual map passed to unit is too large!");
+                throw new Exception($"Visual map passed to unit is too large! ({map.Count})");
 
             vis = map; //the sim manager will give this to the agent
+            
         }
 
         // Function for the Simulation manager to update the agent's percieving location

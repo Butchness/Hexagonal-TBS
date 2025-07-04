@@ -9,8 +9,7 @@ namespace NPC_Training_Test
         static void Main(string[] args)
         {
             // Create agent stats
-            AgentStats agent1Stats = new AgentStats(20, 10, 5, 3, 3, 4, 5);
-            AgentStats agent2Stats = new AgentStats(20, 10, 5, 3, 3, 4, 5);
+            AgentStats agentStats = new AgentStats(20, 10, 5, 3, 3, 4, 5);
 
             static Dictionary<string, Spell> CreateSpellBook()
             {
@@ -40,16 +39,22 @@ namespace NPC_Training_Test
             // Create spells and store them in a dictionary
             Dictionary<string, Spell> spellBook = CreateSpellBook();
 
-            Agent a = new Agent(agent1Stats, spellBook);
-            Agent b = new Agent(agent2Stats, spellBook);
-            
+            int numAgents = 10, numTeams = 3;
             List<Agent> agents = new List<Agent>();
 
-            agents.Add(a);
-            agents.Add(b);
+            for(int j = 1; j < numTeams+1; j++){
+                for(int i = 0; i < numAgents/numTeams; i++){
+                    Agent a = new Agent(agentStats, spellBook);
+                    a.setAlignment(j.ToString()[0]);
+                    agents.Add(a);
+                }
+            }
+
             simManager SimulationManager = new simManager(40, 40, agents);
 
+            Console.Write(agents[0].Alignment);
             Console.Write(SimulationManager.map.ShowMap());
+            Console.Write(agents[0].NN.nodeLayers[1][1].Item1.Data);
         }
     }
 }
